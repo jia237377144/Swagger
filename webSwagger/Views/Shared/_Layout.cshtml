@@ -4,6 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/vue-resource.min.js"></script>
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -24,6 +27,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("主页", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("极验验证码", "ValidateCode", "Home", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
@@ -35,9 +39,9 @@
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
         </footer>
     </div>
-
+    @RenderSection("Script", false)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

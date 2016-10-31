@@ -11,7 +11,10 @@ namespace webSwagger.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            return View();
+        }
+        public ActionResult ValidateCode()
+        {
             return View();
         }
     }

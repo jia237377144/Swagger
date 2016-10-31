@@ -147,11 +147,18 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Base\ApiResponse.cs" />
+    <Compile Include="Base\BaseApiController.cs" />
+    <Compile Include="Base\ResponseEntity.cs" />
+    <Compile Include="Base\ResponseHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Serializer.cs" />
+    <Compile Include="JYAPI\GeetestConfig.cs" />
+    <Compile Include="JYAPI\GeetestLib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +189,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <EmbeddedResource Include="Scripts\translator.js" />
+    <Content Include="Scripts\vue-resource.min.js" />
+    <Content Include="Scripts\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -198,6 +207,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\ValidateCode.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

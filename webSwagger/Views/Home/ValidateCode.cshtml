@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "ValidateCode";
+}
+
+<h2>极验API_____Demo</h2>
+<div class="row">
+    <div id="captcha"></div>
+    <div class="row">
+        @*<asp:Button ID="submitBtn" runat="server" OnClick="submitBtn_Click" Text="登　录" />*@
+        <input type="button" id="submit" value="提交" v-on:click="xxx" />
+    </div>
+    <script src="http://static.geetest.com/static/tools/gt.js"></script>
+    @section Script{
+        <script>
+            var handler = function (captchaObj) {
+                // 将验证码加到id为captcha的元素里
+                captchaObj.appendTo("#captcha");
+            };
+            $.ajax({
+                // 获取id，challenge，success（是否启用failback）
+                url: "/api/test/GenerateCode",
+                type: "post",
+                dataType: "json", // 使用jsonp格式
+                success: function (data) {
+                    console.log(data);
+                    // 使用initGeetest接口
+                    // 参数1：配置参数，与创建Geetest实例时接受的参数一致
+                    // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+                    if (data.Result == 10000) {
+                        var data = JSON.parse( data.Data);
+                        initGeetest({
+                            gt: data.gt,
+                            challenge: data.challenge,
+                            product: "embed", // 产品形式
+                            offline: !data.success
+                        }, handler);
+                    }
+                    else
+                    {
+                        alert("验证码初始化失败");
+                    }
+                }
+            });
+
+            new Vue({
+                el: '.row',
+                methods: {
+                    xxx: function () {
+                        $.ajax({
+                            url: '/api/test/ValidCode',
+                            type: 'post',
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.Result == 10000) {
+                                    alert("Success");
+                                }
+                            },
+                            error: function (data) {
+                            }
+                        })
+                    }
+                }
+            });
+        </script>
+    }
+</div>
